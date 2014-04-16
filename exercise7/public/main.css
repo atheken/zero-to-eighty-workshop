@@ -1,0 +1,47 @@
+html, body, p{
+  padding: 0px;
+  margin: 0px;
+  font-family: arial;
+}
+
+.content{
+  margin: 30px auto;
+  padding: 10px;
+  width: 80%;
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  color: #cfcfcf;
+}
+
+.logo{
+  display: block;
+  border: none;
+  max-width: 600px;
+  max-height: 150px;
+  margin: auto;
+}
+
+#search{
+  width: 80%;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border:1px solid #cfcfcf;
+  border-radius: 10px 0 10px 0;
+  margin-bottom: 20px;
+}
+
+#results span{
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  margin: 10px 5px;
+}
+#results span img{
+  max-width: 140px;
+  max-height: 140px;
+  border: 5px solid white;
+  box-shadow: 0px 0px 5px black;
+}

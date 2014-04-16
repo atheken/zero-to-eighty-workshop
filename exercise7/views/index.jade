@@ -1,0 +1,36 @@
+html
+	head
+		script(src="/jquery.js")
+		script(src="/underscore.js")
+		link(href="/main.css", rel="Stylesheet", type="text/css")
+	body
+		.content
+			img.logo(src="gazpacho_large.png")
+			input#search(placeholder="Search for movies. (i.e. \"Rocky\")")
+			#results
+		script.
+			$(function(){
+				var results = $('#results');
+				var handleSearch = function(query){
+					query = query || $('#search').val();
+					results.empty();
+					results.append('Looking for movies...');
+					$.get('/listmovies', { query : query})
+						.success(function(movies){
+							results.empty();
+							for(var i = 0; i < movies.length; i++){
+								var movie = movies[i];
+								results.append('<span><a target="_blank" href="'+movie.links.alternate+'"><img src="' + movie.posters.profile
+									+ '" title="'+ movie.title+'"/></a></span>');
+							}
+						});
+				};
+
+				//only fire after a 250 ms wait.
+				handleSearch = _.debounce(handleSearch, 250);
+
+				$('#search').keyup(function(){handleSearch();});
+
+				//seed the UI with some classics.
+				handleSearch('Rocky');
+			});
